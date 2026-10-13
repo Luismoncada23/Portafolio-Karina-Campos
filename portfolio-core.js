@@ -169,7 +169,7 @@
       (stats ? '<div class="grid grid-cols-2 sm:grid-cols-4 gap-3 pt-2">' + stats + '</div>' : '') +
       (buttons ? '<div class="pt-2 flex flex-wrap items-center gap-3">' + buttons + '</div>' : '') +
       '</div>' +
-      '<div class="lg:col-span-5 flex justify-center"><div class="relative w-full max-w-sm">' +
+      '<div class="lg:col-span-5 flex justify-center order-first lg:order-none"><div class="relative w-full max-w-sm">' +
       '<div class="absolute -inset-1.5 bg-gradient-to-r from-primary via-tertiary to-secondary rounded-3xl blur-xl opacity-30 animate-pulse"></div>' +
       '<div class="relative glass-panel p-3 rounded-2xl border border-primary/40 shadow-2xl">' + photo + status +
       (dock ? '<div class="mt-3 py-2 px-3 rounded-xl bg-surface-container-lowest/80 border border-outline-variant/30 flex items-center justify-between"><span class="text-label-sm font-label-sm text-on-surface-variant">Conexiones Profesionales</span><div class="flex items-center gap-2">' + dock + '</div></div>' : '') +
@@ -293,10 +293,10 @@
       (d.site.footerCta ? '<a class="text-secondary dark:text-secondary font-medium hover:text-primary transition-colors" href="' + waLink(d) + '" rel="noopener noreferrer" target="_blank">' + esc(d.site.footerCta) + '</a>' : '');
     var nm = esc(d.site.footerName || d.profile.name);
     return '<div class="flex flex-col md:flex-row items-center justify-between gap-4 px-6 lg:px-12 py-8 max-w-7xl mx-auto w-full">' +
-      '<div class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left"><span class="text-headline-sm font-headline-sm text-primary dark:text-primary font-bold select-none" data-pf-secret>' + nm + '</span>' +
+      '<div class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left order-2 md:order-1"><span class="text-headline-sm font-headline-sm text-primary dark:text-primary font-bold select-none" data-pf-secret>' + nm + '</span>' +
       '<span class="hidden sm:inline text-outline-variant">|</span>' +
       '<span class="text-body-sm font-body-sm text-on-surface-variant">© ' + (new Date().getFullYear()) + ' ' + nm + ' • Todos los derechos reservados</span></div>' +
-      '<div class="flex flex-wrap items-center justify-center gap-5 text-label-sm font-label-sm">' + links + '</div></div>';
+      '<div class="flex flex-wrap items-center justify-center gap-5 text-label-sm font-label-sm order-1 md:order-2">' + links + '</div></div>';
   }
 
   /* ---------- Aplicar los datos a la página ---------- */

@@ -757,6 +757,7 @@
   function hideLogin() { $('#login').classList.add('hidden'); }
   function loginMessage(e) {
     var m = (e && e.message) || '';
+    if (e && e.status === 400 && /not confirmed/i.test(m)) return 'Tu usuario aún no está confirmado. En Supabase (Authentication → Users) confírmalo, o créalo marcando Auto Confirm User.';
     if (e && e.status === 400 && /invalid|credentials/i.test(m)) return 'El correo o la contraseña no son correctos.';
     if (e && e.status === 429) return 'Demasiados intentos. Espera un momento e inténtalo de nuevo.';
     if (!e || !e.status) return 'No se pudo conectar. Revisa tu conexión a internet.';
@@ -772,6 +773,11 @@
       window.PFR.signIn(email, pass).then(function () { $('#loginPass').value = ''; enter(); })
         .catch(function (e) { err.textContent = loginMessage(e); err.classList.remove('hidden'); })
         .then(function () { btn.disabled = false; btn.textContent = 'Entrar'; });
+    });
+    $('#togglePass').addEventListener('click', function () {
+      var i = $('#loginPass'), show = i.type === 'password'; i.type = show ? 'text' : 'password';
+      this.setAttribute('aria-pressed', show); this.setAttribute('aria-label', show ? 'Ocultar contraseña' : 'Mostrar contraseña');
+      $('.material-symbols-outlined', this).textContent = show ? 'visibility_off' : 'visibility';
     });
     var lo = $('#btnLogout'); lo.classList.remove('hidden'); lo.classList.add('flex');
     lo.addEventListener('click', function () { window.PFR.signOut(); location.reload(); });
