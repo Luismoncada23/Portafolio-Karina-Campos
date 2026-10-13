@@ -12,8 +12,8 @@
    "service_role".
    ===================================================================== */
 window.PF_CONFIG = {
-  supabaseUrl: '[https://ogijwqzvmhukgdlkrhbx.supabase.co](https://ogijwqzvmhukgdlkrhbx.supabase.co)',      // Ej.: 'https://abcdefgh.supabase.co'
-  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9naWp3cXp2bWh1a2dkbGtyaGJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4Njk5ODAsImV4cCI6MjEwNzQ0NTk4MH0.dpDZV5mtEGACk7dQY08OJR7HQEwksMl3E9WcTHlNmGQ',  // Ej.: 'eyJhbGciOi...'
+  supabaseUrl: 'https://ogijwqzvmhukgdlkrhbx.supabase.co',
+  supabaseAnonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9naWp3cXp2bWh1a2dkbGtyaGJ4Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3OTE4Njk5ODAsImV4cCI6MjEwNzQ0NTk4MH0.dpDZV5mtEGACk7dQY08OJR7HQEwksMl3E9WcTHlNmGQ',
   table: 'portfolio_content',
   bucket: 'portfolio-media'
 };

@@ -8,7 +8,18 @@
   'use strict';
 
   var cfg = root.PF_CONFIG || {};
-  var URL_ = String(cfg.supabaseUrl || '').trim().replace(/\/+$/, '');
+  /* Acepta la dirección tal como se copie y deja solo https://TU-PROYECTO.supabase.co */
+  function normalizeUrl(u) {
+    u = String(u || '').trim();
+    if (!u) return '';
+    var link = u.match(/https?:\/\/[^\s\[\]()'"]+/i);   /* por si se pegó como enlace [texto](url) */
+    if (link) u = link[0];
+    var m = u.match(/dashboard\/project\/([a-z0-9]+)/i);
+    if (m) return 'https://' + m[1].toLowerCase() + '.supabase.co';
+    if (!/^https?:\/\//i.test(u)) u = /^[a-z0-9]{12,30}$/i.test(u) ? 'https://' + u.toLowerCase() + '.supabase.co' : 'https://' + u;
+    try { return new URL(u).origin; } catch (e) { return u.replace(/\/+$/, ''); }
+  }
+  var URL_ = normalizeUrl(cfg.supabaseUrl);
   var KEY = String(cfg.supabaseAnonKey || '').trim();
   var TABLE = cfg.table || 'portfolio_content';
   var BUCKET = cfg.bucket || 'portfolio-media';
@@ -16,7 +27,9 @@
 
   function enabled() { return !!(URL_ && KEY); }
   function headers(token, extra) {
-    var h = { apikey: KEY, Authorization: 'Bearer ' + (token || KEY) };
+    var h = { apikey: KEY };
+    /* Las claves nuevas (sb_publishable_…) no son JWT: van solo en apikey. */
+    if (token) h.Authorization = 'Bearer ' + token; else if (/^eyJ/.test(KEY)) h.Authorization = 'Bearer ' + KEY;
     for (var k in (extra || {})) h[k] = extra[k];
     return h;
   }
@@ -27,7 +40,9 @@
       var d = null; try { d = t ? JSON.parse(t) : null; } catch (e) { d = null; }
       if (!res.ok) {
         var e = new Error((d && (d.error_description || d.msg || d.message || d.error)) || ('Error ' + res.status));
-        e.status = res.status; e.body = d; throw e;
+        e.status = res.status; e.body = d;
+        try { e.path = new URL(res.url).pathname; } catch (x) { e.path = ''; }
+        throw e;
       }
       return d;
     });
@@ -108,7 +123,7 @@
   }
 
   root.PFR = {
-    enabled: enabled, fetchContent: fetchContent, saveContent: saveContent, uploadImage: uploadImage,
+    host: URL_.replace(/^https?:\/\//, ''), enabled: enabled, fetchContent: fetchContent, saveContent: saveContent, uploadImage: uploadImage,
     signIn: signIn, signOut: signOut, getSession: getSession, session: readSession, publicUrl: publicUrl
   };
 })(window);
