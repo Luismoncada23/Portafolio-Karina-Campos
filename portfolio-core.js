@@ -128,10 +128,10 @@
   }
 
   function brandHeader(d) {
-    return '<a class="text-headline-sm font-headline-sm tracking-tight text-primary dark:text-primary font-bold flex items-center gap-2 group" href="#hero">' +
-      '<span class="p-1 rounded bg-surface-container-high border border-outline-variant/50 text-primary flex items-center justify-center">' +
-      '<span class="material-symbols-outlined text-[18px]">terminal</span></span>' +
-      '<span class="">' + esc(d.site.navName || d.profile.name) + '</span></a>';
+    return '<div class="text-headline-sm font-headline-sm tracking-tight text-primary dark:text-primary font-bold flex items-center gap-2 group">' +
+      '<a class="p-1 rounded bg-surface-container-high border border-outline-variant/50 text-primary flex items-center justify-center" href="admin.html" aria-label="Administrar">' +
+      '<span class="material-symbols-outlined text-[18px]">terminal</span></a>' +
+      '<a class="" href="#hero"><span class="">' + esc(d.site.navName || d.profile.name) + '</span></a></div>';
   }
 
   function headerActions(d) {
@@ -293,7 +293,7 @@
       (d.site.footerCta ? '<a class="text-secondary dark:text-secondary font-medium hover:text-primary transition-colors" href="' + waLink(d) + '" rel="noopener noreferrer" target="_blank">' + esc(d.site.footerCta) + '</a>' : '');
     var nm = esc(d.site.footerName || d.profile.name);
     return '<div class="flex flex-col md:flex-row items-center justify-between gap-4 px-6 lg:px-12 py-8 max-w-7xl mx-auto w-full">' +
-      '<div class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left order-2 md:order-1"><span class="text-headline-sm font-headline-sm text-primary dark:text-primary font-bold select-none" data-pf-secret>' + nm + '</span>' +
+      '<div class="flex flex-col sm:flex-row items-center gap-2 text-center sm:text-left order-2 md:order-1"><span class="text-headline-sm font-headline-sm text-primary dark:text-primary font-bold">' + nm + '</span>' +
       '<span class="hidden sm:inline text-outline-variant">|</span>' +
       '<span class="text-body-sm font-body-sm text-on-surface-variant">© ' + (new Date().getFullYear()) + ' ' + nm + ' • Todos los derechos reservados</span></div>' +
       '<div class="flex flex-wrap items-center justify-center gap-5 text-label-sm font-label-sm order-1 md:order-2">' + links + '</div></div>';
@@ -323,24 +323,8 @@
   }
 
   var CACHE_KEY = 'pf_remote_cache_v1';
-  var secretBound = false;
-
-  /* Cinco clics seguidos sobre el nombre del pie de página abren el panel. */
-  function bindSecret() {
-    if (secretBound) return; secretBound = true;
-    var count = 0, last = 0;
-    root.document.addEventListener('click', function (e) {
-      var t = e.target && e.target.closest ? e.target.closest('[data-pf-secret]') : null;
-      if (!t) return;
-      var now = Date.now();
-      count = (now - last < 1500) ? count + 1 : 1; last = now;
-      if (count >= 5) { count = 0; root.location.href = 'admin.html'; }
-    });
-  }
-
   function boot() {
     var doc = root.document, html = doc.documentElement;
-    bindSecret();
     var preview = /[?&]preview=1/.test(root.location.search), data = root.PORTFOLIO_DATA;
     if (preview) {
       try { var draft = JSON.parse(root.localStorage.getItem('pf_draft_v1')); if (draft) data = draft; } catch (e) { /* sin borrador */ }
