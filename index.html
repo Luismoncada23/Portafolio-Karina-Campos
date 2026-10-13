@@ -1,0 +1,78 @@
+<!DOCTYPE html><html class="dark scroll-smooth" lang="es"><head>
+<meta charset="utf-8">
+<meta content="width=device-width, initial-scale=1.0" name="viewport">
+<title>Portafolio</title>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet">
+<!-- Google Fonts: Inter & Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect">
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;family=Plus+Jakarta+Sans:wght@500;600;700;800&amp;display=swap" rel="stylesheet">
+<!-- Tailwind CSS from CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Archivos CSS y JavaScript externos -->
+  <link href="style.css" rel="stylesheet">
+<style>html.pf-wait main,html.pf-wait #pf-footer{opacity:0}main,#pf-footer{transition:opacity .25s ease}@media (prefers-reduced-motion:reduce){main,#pf-footer{transition:none}}</style>
+</head>
+<body class="bg-background text-on-surface font-body-md antialiased selection:bg-primary selection:text-on-primary min-h-screen flex flex-col circuit-bg relative">
+<!-- TOP NAV BAR (Shared Component JSON Blueprint) -->
+<header class="sticky top-0 z-50 w-full bg-surface/80 dark:bg-surface/80 backdrop-blur-md border-b border-outline-variant/30 dark:border-outline-variant/30 shadow-sm">
+<div class="flex items-center justify-between px-6 lg:px-12 py-3.5 max-w-7xl mx-auto w-full">
+<!-- Monograma y Regreso -->
+<div class="flex items-center gap-4" id="pf-brand"></div>
+<!-- Quick Section Links -->
+<nav class="hidden md:flex items-center gap-6">
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant 
+hover:text-primary hover:border-primary pb-1 border-b-2 border-transparent transition-colors nav-item" href="#metodologia" data-target="metodologia"><span class="text-on-surface-variant font-medium">Metodología</span></a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant 
+hover:text-primary hover:border-primary pb-1 border-b-2 border-transparent transition-colors nav-item" href="#competencias" data-target="competencias"><span class="text-on-surface-variant font-medium">Stack &amp; 
+Competencias</span></a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant 
+hover:text-primary hover:border-primary pb-1 border-b-2 border-transparent transition-colors nav-item" href="#casos" data-target="casos"><span class="text-on-surface-variant font-medium">Casos de Estudio</span></a>
+<a class="text-label-md font-label-md text-on-surface-variant dark:text-on-surface-variant 
+hover:text-primary hover:border-primary pb-1 border-b-2 border-transparent transition-colors nav-item" href="#trayectoria" data-target="trayectoria"><span class="text-on-surface-variant font-medium">Trayectoria</span></a>
+</nav>
+<!-- Trailing Action Controls -->
+<div class="flex items-center gap-3" id="pf-actions"></div>
+</div>
+</header>
+<!-- MAIN DOSSIER CANVAS -->
+<main class="flex-grow w-full max-w-7xl mx-auto px-6 lg:px-12 py-8 space-y-16">
+<!-- 1. HERO DEL DOSSIER EJECUTIVO (2 COLUMNAS) -->
+<section class="relative pt-4 pb-2" id="hero">
+<!-- Contenido generado desde data.js (portfolio-core.js) -->
+</section>
+<!-- 2. FILOSOFÍA Y METODOLOGÍA DE 4 FASES -->
+<section class="space-y-8 scroll-mt-20" id="metodologia">
+<!-- Contenido generado desde data.js (portfolio-core.js) -->
+</section>
+<!-- 3. MATRIZ DE COMPETENCIAS & DOMINIO TÉCNICO -->
+<section class="space-y-8 scroll-mt-20" id="competencias">
+<!-- Contenido generado desde data.js (portfolio-core.js) -->
+</section>
+<!-- 4. CASOS DE TRANSFORMACIÓN REAL (HISTORIAS DE ÉXITO DETALLADAS) -->
+<section class="space-y-8 scroll-mt-20" id="casos">
+<!-- Contenido generado desde data.js (portfolio-core.js) -->
+</section>
+<!-- 5. TRAYECTORIA & CREDENCIALES ACADÉMICAS -->
+<section class="space-y-8 scroll-mt-20" id="trayectoria">
+<!-- Contenido generado desde data.js (portfolio-core.js) -->
+</section>
+<!-- 6. CTA DE CONVERSIÓN & CONTACTO DIRECTO -->
+<section class="relative rounded-3xl overflow-hidden p-8 lg:p-12 border border-primary/40 bg-gradient-to-br from-surface-container-low via-surface-container to-surface-container-lowest shadow-2xl" id="contacto">
+<!-- Contenido generado desde data.js (portfolio-core.js) -->
+</section>
+</main>
+<!-- TECHNICAL FOOTER (Shared Component JSON Blueprint) -->
+  <footer id="pf-footer" class="w-full mt-auto bg-surface-container-lowest dark:bg-surface-container-lowest border-t border-outline-variant/20 dark:border-outline-variant/20"></footer>
+  
+  <!-- Archivos JavaScript externos -->
+  <noscript><p style="padding:2rem;text-align:center;color:#bcc9cd">Activa JavaScript para ver este portafolio.</p></noscript>
+  <script src="config.js"></script>
+  <script src="data.js"></script>
+  <script src="portfolio-remote.js"></script>
+  <script src="portfolio-core.js"></script>
+  <script>PF.boot();</script>
+  <script src="script.js"></script>
+</body></html>
+
